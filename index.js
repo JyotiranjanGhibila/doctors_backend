@@ -7,9 +7,10 @@ const connection = require("./config/db");
 const { personRouter } = require("./routes/person.routes");
 
 const corsOptions = {
-  origin: true,
+  origin: (origin, callback) => {
+    callback(null, true);
+  },
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
-  credentials: true,
 };
 
 app.use(cors(corsOptions));
